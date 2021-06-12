@@ -59,5 +59,5 @@ while game:
             column1 = Picture('column.png', 700, columnUpY, 100, 300, 180)
             column_list.append(column)
             column_list.append(column1)
-bird.draw()
+    bird.draw()
 
