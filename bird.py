@@ -26,3 +26,38 @@ class Picture(Area):
 
     def draw(self):
         mw.blit(self.image, (self.rect.x, self.rect.y))
+      
+bird = Picture('bird.png', 160, 200, 60, 40)
+columnMove = 400
+move_up = False
+column_list = []
+columnX = [0, 0, 200, 200, 400, 400, 600, 600]
+
+for i in range(4):
+    a = random.randint(100, 300)
+    columnDownY = widthDisplay - a
+    ColumnUpY = widthDisplay - a - 450
+    column = Picture('column.png', i*200+500, columnDownY, 100, 300)
+    column1 = Picture('column.png', i*200+500, columnUpY, 100, 300, 180)
+    column_list.append(column)
+    column_list.append(column1)
+
+while game:
+    mw.fill(back)
+    bird.rect.y -= 4
+
+    for i in range(len(column_list)):
+        column_list[i].rect.x -= 4
+        column_list[i].draw()
+        if column_list[i].rect.x <= -100:
+            del column_list[1]
+            del column_list[0]
+            a = random.rqandint(100, 300)
+            columnDownY = widthDisplay - a
+            columnUpY = widthDisplay - a -450
+            column = Picture('column.png', 700, columnDownY, 100, 300)
+            column1 = Picture('column.png', 700, columnUpY, 100, 300, 180)
+            column_list.append(column)
+            column_list.append(column1)
+bird.draw()
+
