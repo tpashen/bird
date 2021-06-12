@@ -60,4 +60,23 @@ while game:
             column_list.append(column)
             column_list.append(column1)
     bird.draw()
+    for event in pygame.event.get():
+    if event.type == pygame.QUIT:
+        game = False
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_SPASE:
+            move_up = True
+    elif event.type == pygame.KEYUP:
+        if event.key == pygame.K_SPACE:
+            move_up = False
+    if move_up:
+        bird.rect.y -= 10
+    for i in column_list:
+        if i.rect/colliderect(bird.rect):
+            game = False
+    if bird.rect.y > 500 or bird.rect.y < 0:
+        game = False
+    pygame.display.update()
+    clock.tick(40)
+    
 
